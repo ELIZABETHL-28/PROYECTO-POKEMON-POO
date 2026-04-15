@@ -47,6 +47,16 @@ class Pokemon():
             self.energia_actual = self.__energia_max
             
         print({self.nombre}, "MODO RECUPERANDO ENERGIA")
+        
+    def recibir_golpe(self, golpe): 
+        if self.defensa: 
+            golpe = golpe // 2 
+            self.defensa = False 
+            
+        self.hp_actual -= golpe 
+        print({self.nombre}, "REBICIO DAÑO DE", {golpe})
+            
+        
     
     
             
