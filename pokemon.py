@@ -30,8 +30,29 @@ class Pokemon():
         if valor < 0: 
             self.__energia_actual = 0
         else: 
-            self.__energia_actual = valor               
+            self.__energia_actual = valor  
+            
+    def defender(self): 
+        if self.energia_actual >= 5: 
+            self.energia_actual -= 5 
+            self.defensa = True 
+            print({self.nombre}, "en modo defensa")
+        else: 
+            print("NO TIENE ENERGIA SUFICIENTE")
+            
+    def descansar(self): 
+        self.energia_actual += 20 
+        
+        if self.energia_actual > self.__energia_max:
+            self.energia_actual = self.__energia_max
+            
+        print({self.nombre}, "MODO RECUPERANDO ENERGIA")
     
+    
+            
+            
+    
+        
     
     
         
