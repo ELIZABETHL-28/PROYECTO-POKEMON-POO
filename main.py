@@ -13,3 +13,10 @@ animal.hp_actual -= 100
 animal.defender()
 animal.recibir_golpe(20)
 print(animal.hp_actual)
+
+
+# # from pokemon import Pokemon
+
+# class PokemonAgua(Pokemon):
+#     def __init__(self, nombre, hp_maximo, energia_maxima):
+#         super().__init__(nombre, hp_maximo, energia_maxima)
