@@ -79,13 +79,20 @@ def ejecutar_turno(pokemon_actual, pokemon_enemigo, es_cpu=False):
     print("EP:", pokemon_actual.energia_actual, "/", pokemon_actual.energia_maxima)
 
     if es_cpu:
-        accion = random.randint(1, 3)
+        
+        if pokemon_actual.energia_actual < 15: 
+            accion = 3
+        else: 
+            accion = random.randint(1, 2)
         print("La computadora elige:", accion)
     else:
         accion = elegir_accion()
 
     if accion == 1:
-        pokemon_actual.atacar(pokemon_enemigo)
+        if pokemon_actual.energia_actual >= 15:  
+            pokemon_actual.atacar(pokemon_enemigo)
+        else: 
+            print("NO HAY SUFICIENTE ENERGIA. HORA DE DESCANSAR")
     elif accion == 2:
         pokemon_actual.defender()
     elif accion == 3:
@@ -121,18 +128,10 @@ pokemon_jugador_1 = seleccionar_pokemon("Jugador 1")
 if modo == 1:
     pokemon_jugador_2 = seleccionar_pokemon("Jugador 2")
 else:
-    from pokedex import CATALOGO_POKEMON
-    opcion_cpu = random.choice(list(CATALOGO_POKEMON.keys()))
+    opcion_cpu = str(random.randint(1, 8))
     pokemon_jugador_2 = crear_pokemon(opcion_cpu)
     print("La computadora eligió a", pokemon_jugador_2.nombre)
 
 print("¡COMIENZA LA BATALLA!")
 batalla(pokemon_jugador_1, pokemon_jugador_2, modo)
 
-
-
-# Menú inicial
-mostrar_catalogo_disponible()
-opcion = input("ELIJE TU POKÉMON: ")
-pokemon_jugador = crear_pokemon(opcion)
-print("ELEGISTE A: ", pokemon_jugador.nombre)
