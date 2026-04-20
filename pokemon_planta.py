@@ -1,5 +1,4 @@
 from pokemon import Pokemon
-from pokemon_agua import PokemonAgua
 
 class PokemonPlanta(Pokemon):
 
@@ -11,6 +10,7 @@ class PokemonPlanta(Pokemon):
         self.energia_actual -= 15
         golpe = 15
 
+        from pokemon_agua import PokemonAgua
         if isinstance(enemigo, PokemonAgua):
             golpe *= 2
             print("¡EL ENEMIGO FUE PARALIZADO!")
