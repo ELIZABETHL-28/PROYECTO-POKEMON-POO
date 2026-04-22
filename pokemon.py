@@ -38,7 +38,7 @@ class Pokemon:
         if self.energia_actual >= 5:
             self.energia_actual -= 5
             self.defendiendo = True
-            print(self.nombre, "PREPARANDO PARA DEFENDERSE")
+            print(self.nombre, "SE ESTÁ DEFENDIENDO")
         else:
             print("NO HAY ENERGIA SUFICIENTE")
 

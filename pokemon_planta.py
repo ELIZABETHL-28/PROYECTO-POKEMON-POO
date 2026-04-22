@@ -13,6 +13,7 @@ class PokemonPlanta(Pokemon):
         from pokemon_agua import PokemonAgua
         if isinstance(enemigo, PokemonAgua):
             golpe *= 2
+            enemigo.paralizado = True 
             print("¡EL ENEMIGO FUE PARALIZADO!")
 
         enemigo.recibir_golpe(golpe)

@@ -22,7 +22,7 @@ def seleccionar_modo():
         print("«««««««««««««««««««««««««««««««««««««««««««««")
         print("SIMULADOR DE BATALLAS POKÉMON")
         print("«««««««««««««««««««««««««««««««««««««««««««««")
-        print("1 - JUGADDOR VS JUGADOR")
+        print("1 - JUGADOR VS JUGADOR")
         print("2 - JUGADOR VS COMPUTADORA")
 
         try: 
@@ -34,10 +34,8 @@ def seleccionar_modo():
         except ValueError:
             print("ENTRADA INVALIDA. DEBE SER UN NUMERO")
 
-# ksdjaksdjalksdak      
+      
 def seleccionar_pokemon(nombre_jugador):
-    from pokedex import CATALOGO_POKEMON, mostrar_catalogo_disponible
-
     mostrar_catalogo_disponible()
 
     while True:
@@ -50,7 +48,6 @@ def seleccionar_pokemon(nombre_jugador):
         except ValueError:
             print("Entrada inválida.")
 
-# asjdkajsdkajskd
 def elegir_accion():
     while True:
         print("1. Atacar (15 EP)")
@@ -66,17 +63,21 @@ def elegir_accion():
         except ValueError:
             print("Entrada inválida.")
 
-# asjdkasdjlkasjdalksda
+
 def ejecutar_turno(pokemon_actual, pokemon_enemigo, es_cpu=False):
     if pokemon_actual.paralizado:
         print(pokemon_actual.nombre, "está paralizado y pierde el turno.")
         pokemon_actual.paralizado = False
         return
 
-    print("-----------------------------------")
-    print("Turno de", pokemon_actual.nombre)
-    print("HP:", pokemon_actual.hp_actual, "/", pokemon_actual.hp_maximo)
-    print("EP:", pokemon_actual.energia_actual, "/", pokemon_actual.energia_maxima)
+    print("\n- - - - - - - - - - - - - - - - - - - -")
+    print("\tTURNO DE: ", pokemon_actual.nombre)
+    print("\tHP: ", pokemon_actual.hp_actual, "/", pokemon_actual.hp_maximo)
+    print("\tEP: ", pokemon_actual.energia_actual, "/", pokemon_actual.energia_maxima)
+    print("- - - - - - - - - - - - - - - - - - - - -")
+    print("\tENEMIGO: ", pokemon_enemigo.nombre)
+    print("\tHP ENEMIGO: ", pokemon_enemigo.hp_actual, "/", pokemon_enemigo.hp_maximo)
+    print("- - - - - - - - - - - - - - - - - - - - -")
 
     if es_cpu:
         
@@ -92,13 +93,13 @@ def ejecutar_turno(pokemon_actual, pokemon_enemigo, es_cpu=False):
         if pokemon_actual.energia_actual >= 15:  
             pokemon_actual.atacar(pokemon_enemigo)
         else: 
+            pokemon_actual.descansar()
             print("NO HAY SUFICIENTE ENERGIA. HORA DE DESCANSAR")
     elif accion == 2:
         pokemon_actual.defender()
     elif accion == 3:
         pokemon_actual.descansar()
 
-# sdjakslkdjaslkdjalksjd
 def batalla(pokemon_1, pokemon_2, modo):
     turno_jugador_1 = True
 
@@ -113,14 +114,13 @@ def batalla(pokemon_1, pokemon_2, modo):
 
         turno_jugador_1 = not turno_jugador_1
 
-    print("===================================")
+    print("\n===================================")
     if pokemon_1.hp_actual > 0:
         print(pokemon_1.nombre, "gana la batalla")
     else:
         print(pokemon_2.nombre, "gana la batalla")
 
 
-# askldjaskljdalskjdaslkdjdas
 modo = seleccionar_modo()
 
 pokemon_jugador_1 = seleccionar_pokemon("Jugador 1")
@@ -130,8 +130,8 @@ if modo == 1:
 else:
     opcion_cpu = str(random.randint(1, 8))
     pokemon_jugador_2 = crear_pokemon(opcion_cpu)
-    print("La computadora eligió a", pokemon_jugador_2.nombre)
+    print("LA COMPUTADORA ELEGIO A: ", pokemon_jugador_2.nombre)
 
-print("¡COMIENZA LA BATALLA!")
+print("\n¡COMIENZA LA BATALLA!")
 batalla(pokemon_jugador_1, pokemon_jugador_2, modo)
 

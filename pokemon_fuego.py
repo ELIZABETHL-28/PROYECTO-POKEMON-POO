@@ -14,6 +14,7 @@ class PokemonFuego(Pokemon):
         from pokemon_planta import PokemonPlanta
         if isinstance(enemigo, PokemonPlanta):
             golpe *= 2
+            enemigo.paralizado = True 
             print("¡EL ENEMIGO FUE PARALIZADO!")
 
         enemigo.recibir_golpe(golpe)
